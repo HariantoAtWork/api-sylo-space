@@ -19,17 +19,24 @@
     "url": "https://github.com/typicode/jsonplaceholder.git"
   },
   "scripts": {
-    "start": "node index",
+    "start": "gulp reload:server",
+    "gulp": "gulp",
     "test": "node test/app",
     "precommit": "npm test"
   },
   "dependencies": {
     "clone": "^1.0.2",
+    "cors": "^2.8.4",
     "json-server": "^0.12.1"
   },
   "devDependencies": {
     "Faker": "~0.5.11",
+    "gulp": "^3.9.1",
+    "gulp-livereload": "^3.8.1",
+    "gulp-nodemon": "^2.2.1",
     "husky": "^0.13.2",
+    "node-notifier": "^5.2.1",
+    "nodemon": "^1.17.3",
     "rosie": "~1.6.0",
     "supertest": "^1.2.0",
     "tape": "^4.5.1",
