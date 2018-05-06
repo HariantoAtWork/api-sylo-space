@@ -2,14 +2,14 @@ const
 	express = require('express'),
 	router = express.Router()
 
-const dataJobsList = require('../data/jobs.list.json'),
-	dataJobsFilters = require('../data/jobs.filters.json'),
-	dataCasesList = require('../data/cases.list.json'),
-	dataCasesFilters = require('../data/cases.filters.json')
+const 
+  dataJobsList = require('../data/jobs.list.json'),
+	dataJobsFilters = require('../data/jobs.filters.json')
+	
 
 const
 	sortByDate = (a, b) => new Date(b.publishAt) - new Date(a.publishAt),
-	casesSortedByDate = dataCasesList.sort(sortByDate),
+	
 	uniqueTagsFromItems = (items) => {
 		let tags = []
 		items.forEach(item => tags.push(...item.tags))
@@ -23,7 +23,12 @@ router.get('/', function(req, res, next) {
   res.send('Valtech API')
 })
 
-router.get('/cases', (req, res, next) => {
+router.get('/v1/cases', (req, res, next) => {
+  const
+    dataCasesList = require('../data/cases.list.json'),
+    dataCasesFilters = require('../data/cases.filters.json'),
+    casesSortedByDate = dataCasesList.sort(sortByDate)
+
   const query = req.query
   console.log(req.query)
 
@@ -32,11 +37,12 @@ router.get('/cases', (req, res, next) => {
     const slug = item.value
     if (query.hasOwnProperty(slug)) mustContain.push(query[slug])
   })
-  console.log(mustContain)
+  if(query.hasOwnProperty('filter') && Array.isArray(query.filter)) mustContain.push(...query.filter)
+
   const filteredItems = casesSortedByDate.filter(item => {
     let found = true
     mustContain.forEach(n => {
-      found *= item.tags.indexOf(+n) > -1
+      found *= item.tags.indexOf(!isNaN(+n) ? +n : n) > -1
     })
     return Boolean(found)
   })
@@ -45,7 +51,7 @@ router.get('/cases', (req, res, next) => {
     length = filteredItems.length,
     pageCurrent = Math.floor(pageOffset / pageLimit) + 1,
     pageTotal = Math.ceil(length / pageLimit),
-    prevOffset = pageCurrent > 1 ? { offset: pageOffset - pageLimit, limit: pageLimit } : null,
+    prevOffset = pageCurrent > 1 ? { offset: pageOffset - pageLimit, limit: pageLimit } : pageOffset > 0 && pageOffset < pageLimit ? { offset: 0, limit: pageLimit } : null,
     nextOffset = pageCurrent < pageTotal ? { offset: pageOffset + pageLimit, limit: pageLimit } : null,
     list = [...filteredItems].splice(pageOffset, pageLimit),
     nextQuery = {}
@@ -80,7 +86,7 @@ router.get('/cases', (req, res, next) => {
   }
 })
 
-router.use('/jobs', (req, res, next) => {
+router.use('/v1/jobs', (req, res, next) => {
   const data = {
     filters: dataJobsFilters,
     list: dataJobsList

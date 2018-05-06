@@ -7,7 +7,7 @@ const router = jsonServer.router(clone(data))
 
 app.use(cors())
 
-app.use('/valtech', require('./routes/valtech'))
+app.use('/api/valtech', require('./routes/valtech.v1'))
 
 app.use((req, res, next) => {
   if (req.path === '/') return next()
