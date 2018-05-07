@@ -1,0 +1,424 @@
+{
+    "filters": [
+        {
+            "text": "All Regions",
+            "value": "region",
+            "list": [
+                {
+                    "text": "North America",
+                    "value": "region-north-america"
+                },
+                {
+                    "text": "South America",
+                    "value": "region-south-america"
+                },
+                {
+                    "text": "Europe",
+                    "value": "region-europe"
+                },
+                {
+                    "text": "Asia",
+                    "value": "region-asia"
+                },
+                {
+                    "text": "Oceania",
+                    "value": "region-oceania"
+                }
+            ]
+        },
+        {
+            "text": "All Countries",
+            "value": "country",
+            "list": [
+                {
+                    "text": "Argentina",
+                    "value": "country-argentina"
+                },
+                {
+                    "text": "Australia",
+                    "value": "country-australia"
+                },
+                {
+                    "text": "Brazil",
+                    "value": "country-brazil"
+                },
+                {
+                    "text": "Canada",
+                    "value": "country-canada"
+                },
+                {
+                    "text": "China",
+                    "value": "country-china"
+                },
+                {
+                    "text": "Denmark",
+                    "value": "country-denmark"
+                },
+                {
+                    "text": "France",
+                    "value": "country-france"
+                },
+                {
+                    "text": "Germany",
+                    "value": "country-germany"
+                },
+                {
+                    "text": "India",
+                    "value": "country-india"
+                },
+                {
+                    "text": "Netherlands",
+                    "value": "country-netherlands"
+                },
+                {
+                    "text": "Singapore",
+                    "value": "country-singapore"
+                },
+                {
+                    "text": "Sweden",
+                    "value": "country-sweden"
+                },
+                {
+                    "text": "Switzerland",
+                    "value": "country-switzerland"
+                },
+                {
+                    "text": "Ukraine",
+                    "value": "country-ukraine"
+                },
+                {
+                    "text": "United Kingdom",
+                    "value": "country-united-kingdom"
+                }
+            ]
+        },
+        {
+            "text": "All Offices",
+            "value": "office",
+            "list": [
+                {
+                    "text": "Buenos Aires (Palermo)",
+                    "value": "office-buenos-aires-palermo"
+                },
+                {
+                    "text": "Buenos Aires (Ramos Mejía)",
+                    "value": "office-buenos-aires-ramos-mejia"
+                },
+                {
+                    "text": "Sydney",
+                    "value": "office-sydney"
+                },
+                {
+                    "text": "Melbourne",
+                    "value": "office-melbourne"
+                },
+                {
+                    "text": "Florianópolis",
+                    "value": "office-florianopolis"
+                },
+                {
+                    "text": "São Paulo",
+                    "value": "office-sao-paulo"
+                },
+                {
+                    "text": "Montreal",
+                    "value": "office-montreal"
+                },
+                {
+                    "text": "Toronto",
+                    "value": "office-toronto"
+                },
+                {
+                    "text": "Ottawa",
+                    "value": "office-ottawa"
+                },
+                {
+                    "text": "Shanghai",
+                    "value": "office-shanghai"
+                },
+                {
+                    "text": "Copenhagen",
+                    "value": "office-copenhagen"
+                },
+                {
+                    "text": "Aarhus",
+                    "value": "office-aarhus"
+                },
+                {
+                    "text": "Paris",
+                    "value": "office-paris"
+                },
+                {
+                    "text": "Düsseldorf",
+                    "value": "office-dusseldorf"
+                },
+                {
+                    "text": "Frankfurt",
+                    "value": "office-frankfurt"
+                },
+                {
+                    "text": "Munich",
+                    "value": "office-munich"
+                },
+                {
+                    "text": "Cologne",
+                    "value": "office-cologne"
+                },
+                {
+                    "text": "Bengaluru",
+                    "value": "office-bengaluru"
+                },
+                {
+                    "text": "Gurugram",
+                    "value": "office-gurugram"
+                },
+                {
+                    "text": "Amersfoort",
+                    "value": "office-amersfoort"
+                },
+                {
+                    "text": "Amsterdam",
+                    "value": "office-amsterdam"
+                },
+                {
+                    "text": "Eindhoven",
+                    "value": "office-eindhoven"
+                },
+                {
+                    "text": "Utrecht",
+                    "value": "office-utrecht"
+                },
+                {
+                    "text": "Singapore",
+                    "value": "office-singapore"
+                },
+                {
+                    "text": "Stockholm",
+                    "value": "office-stockholm"
+                },
+                {
+                    "text": "Gothenburg",
+                    "value": "office-gothenburg"
+                },
+                {
+                    "text": "Uppsala",
+                    "value": "office-uppsala"
+                },
+                {
+                    "text": "Västerås",
+                    "value": "office-vasteras"
+                },
+                {
+                    "text": "Geneva",
+                    "value": "office-geneva"
+                },
+                {
+                    "text": "Kyiv",
+                    "value": "office-kyiv"
+                },
+                {
+                    "text": "Dnipro",
+                    "value": "office-dnipro"
+                },
+                {
+                    "text": "Kharkiv",
+                    "value": "office-kharkiv"
+                },
+                {
+                    "text": "Chernihiv",
+                    "value": "office-chernihiv"
+                },
+                {
+                    "text": "London",
+                    "value": "office-london"
+                },
+                {
+                    "text": "Manchester",
+                    "value": "office-manchester"
+                },
+                {
+                    "text": "Bristol",
+                    "value": "office-bristol"
+                }
+            ]
+        },
+        {
+            "text": "All Expertises",
+            "value": "expertise",
+            "list": [
+                {
+                    "text": "Back-end development",
+                    "value": "expertise-backend-development"
+                },
+                {
+                    "text": "Front-end development",
+                    "value": "expertise-frontend-development"
+                },
+                {
+                    "text": "Digital Marketing",
+                    "value": "expertise-digital-marketing"
+                },
+                {
+                    "text": "Strategy and Consultancy",
+                    "value": "expertise-strategy-and-consultancy"
+                },
+                {
+                    "text": "Sales",
+                    "value": "expertise-sales"
+                },
+                {
+                    "text": "Design",
+                    "value": "expertise-design"
+                },
+                {
+                    "text": "Project & Servicemanagement",
+                    "value": "expertise-project-and-servicemanagement"
+                },
+                {
+                    "text": "Management",
+                    "value": "expertise-management"
+                }
+            ]
+        },
+        {
+            "text": "All Type of Contracts",
+            "value": "contracttype",
+            "list": [
+                {
+                    "text": "Contract",
+                    "value": "contracttype-contract"
+                },
+                {
+                    "text": "Internship",
+                    "value": "contracttype-internship"
+                },
+                {
+                    "text": "Freelance",
+                    "value": "contracttype-freelance"
+                }
+            ]
+        }
+    ],
+    "list": [
+        {
+            "id": 1,
+            "title": "C#.Net Developer",
+            "url": "https://valtech.com/jobs/c-sharp-dot-net-developer",
+            "tags": [
+                "country-netherlands",
+                "office-amsterdam",
+                "expertise-backend-development"
+            ]
+        },
+        {
+            "id": 2,
+            "title": "Technical Lead Adobe Experience Manager",
+            "url": "https://valtech.com/jobs/technical-lead-adobe-experience-manager",
+            "tags": [
+                "country-netherlands",
+                "office-amersfoort",
+                "expertise-backend-development"
+            ]
+        },
+        {
+            "id": 3,
+            "title": "DevOps Engineer",
+            "url": "https://valtech.com/jobs/devops-engineer-amersfoort",
+            "tags": [
+                "country-netherlands",
+                "office-amersfoort",
+                "expertise-backend-development"
+            ]
+        },
+        {
+            "id": 4,
+            "title": "Technical QA Specialist",
+            "url": "https://valtech.com/jobs/technical-qa-specialist",
+            "tags": [
+                "country-netherlands",
+                "office-amersfoort",
+                "expertise-digital-marketing"
+            ]
+        },
+        {
+            "id": 5,
+            "title": "DevOps Engineer",
+            "url": "https://valtech.com/jobs/devops-engineer-utrecht",
+            "tags": [
+                "country-netherlands",
+                "office-utrecht",
+                "expertise-backend-development"
+            ]
+        },
+        {
+            "id": 6,
+            "title": "Technical Front-End Developer",
+            "url": "https://valtech.com/jobs/technical-frontend-developer-amsterdam",
+            "tags": [
+                "country-netherlands",
+                "office-amsterdam",
+                "expertise-frontend-development"
+            ]
+        },
+        {
+            "id": 7,
+            "title": "Brazil C#.Net Developer",
+            "url": "https://valtech.com/jobs/brazil-c-sharp-dot-net-developer",
+            "tags": [
+                "country-brazil",
+                "office-florianopolis",
+                "expertise-backend-development"
+            ]
+        },
+        {
+            "id": 8,
+            "title": "Brazil Technical Lead Adobe Experience Manager",
+            "url": "https://valtech.com/jobs/brazil-technical-lead-adobe-experience-manager",
+            "tags": [
+                "country-brazil",
+                "office-sao-paulo",
+                "expertise-backend-development"
+            ]
+        },
+        {
+            "id": 9,
+            "title": "DevOps Engineer",
+            "url": "https://valtech.com/jobs/devops-engineer-amersfoort",
+            "tags": [
+                "country-netherlands",
+                "office-amersfoort",
+                "expertise-backend-development"
+            ]
+        },
+        {
+            "id": 10,
+            "title": "China Technical QA Specialist",
+            "url": "https://valtech.com/jobs/technical-qa-specialist",
+            "tags": [
+                "country-china",
+                "office-shanghai",
+                "expertise-digital-marketing"
+            ]
+        },
+        {
+            "id": 11,
+            "title": "India DevOps Engineer",
+            "url": "https://valtech.com/jobs/devops-engineer-utrecht",
+            "tags": [
+                "country-india",
+                "office-bengaluru",
+                "expertise-backend-development"
+            ]
+        },
+        {
+            "id": 12,
+            "title": "UK Technical Front-End Developer",
+            "url": "https://valtech.com/jobs/technical-frontend-developer-amsterdam",
+            "tags": [
+                "country-united-kingdom",
+                "office-manchester",
+                "expertise-frontend-development"
+            ]
+        }
+    ]
+}

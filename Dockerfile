@@ -15,8 +15,7 @@ RUN apk --update add \
  nano
 
 RUN addgroup www-data \
- && adduser -h /home/node/app -s /bin/false -G www-data -D www-data \
- && npm install --global gulp
+ && adduser -h /home/node/app -s /bin/false -G www-data -D www-data
 
 ENV NODE_ENV=production
 ENV PORT=/tmp/api-sylo-space.sock
@@ -33,6 +32,7 @@ RUN npm install graceful-fs && npm install
 USER root
 COPY . $NODE_WORKDIR
 RUN chown -R node:node /home/node
+RUN rm $PORT; touch $PORT && chmod 777 $PORT
 
 # USER node
 

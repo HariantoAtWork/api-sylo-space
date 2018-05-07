@@ -183,3 +183,12 @@ Here's the list of available nested routes:
 * https://jsonplaceholder.typicode.com/users/1/albums
 * https://jsonplaceholder.typicode.com/users/1/todos
 * https://jsonplaceholder.typicode.com/users/1/posts
+
+
+## Docker
+
+Run docker in background `-d` and share `/tmp` folder
+
+```
+docker run -v /tmp:/tmp --restart always -dit harianto/api-sylo-space
+```

@@ -20,7 +20,7 @@
   },
   "scripts": {
     "start": "gulp reload:server",
-    "docker": "rm /tmp/api-sylo-space.sock && node index",
+    "docker": "rm /tmp/api-sylo-space.sock; node index",
     "gulp": "gulp",
     "test": "node test/app",
     "precommit": "npm test"
