@@ -192,3 +192,10 @@ Run docker in background `-d` and share `/tmp` folder
 ```
 docker run -v /tmp:/tmp --restart always -dit harianto/api-sylo-space
 ```
+
+## Build Docker and Push to Docker Server
+
+```
+docker build -t harianto/api-sylo-space .
+docker push harianto/api-sylo-space
+```

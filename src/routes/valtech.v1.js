@@ -13,7 +13,7 @@ const
 	
 
 const
-	sortByDate = (a, b) => new Date(b.publishAt) - new Date(a.publishAt),
+	sortByDate = (a, b) => new Date(b.publishedDate) - new Date(a.publishedDate),
 	
 	uniqueTagsFromItems = (items) => {
 		let tags = []
@@ -65,6 +65,7 @@ const
         pageLimit,
         pageCurrent,
         pageTotal,
+        pageQuery: query,
         pagePrevQuery: prevOffset ? {...query, ...prevOffset} : null,
         pageNextQuery: nextOffset ? {...query, ...nextOffset} : null,
         tagsUnique: uniqueTagsFromItems(filteredItems)
@@ -86,6 +87,22 @@ const
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.send('Valtech API')
+})
+
+router.get('/v1/insights', (req, res, next) => {
+  const query = req.query
+
+  const 
+    filtersFile = path.join(jsonpath, 'insights.filters.json'),
+    listFile = path.join(jsonpath, 'insights.list.json')
+
+  return Promise.all([readFile(filtersFile), readFile(listFile)])
+  .then(values => ({
+    dataFilter: JSON.parse(values[0]),
+    dataList: JSON.parse(values[1])
+  }))
+  .then(returnFilteredData.bind(null, query))
+  .then(res.json.bind(res))
 })
 
 router.get('/v1/cases', (req, res, next) => {
