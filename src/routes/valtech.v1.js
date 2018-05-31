@@ -1,20 +1,23 @@
 const
   readFile = require('../lib/readFile'),
   express = require('express'),
+  bodyParser = require('body-parser'),
   path = require('path'),
   router = express.Router(),
   jsonpath = path.join(__dirname, '..', 'data')
 
 console.log(__dirname)
 
-const 
+const
   dataJobsList = require('../data/jobs.list.json'),
 	dataJobsFilters = require('../data/jobs.filters.json')
-	
+
 
 const
+  convertNaN = (value) => !isNaN(value) ? +value : value,
+
 	sortByDate = (a, b) => new Date(b.publishedDate) - new Date(a.publishedDate),
-	
+
 	uniqueTagsFromItems = (items) => {
 		let tags = []
 		items.forEach(item => tags.push(...item.tags))
@@ -22,7 +25,7 @@ const
 		return tags
 		.filter((value, index, self) => self.indexOf(value) === index)
   },
-  
+
   returnFilteredData = (query, files) => {
     const { dataFilter, dataList } = files
 
@@ -31,20 +34,21 @@ const
 
     const mustContain = []
     dataFilter.forEach(item => {
-      const slug = item.value
-      if (query.hasOwnProperty(slug)) mustContain.push(query[slug])
+      const slug = convertNaN(item.value)
+      if (query.hasOwnProperty(slug) && query[slug]) mustContain.push(query[slug])
     })
     if(query.hasOwnProperty('filter') && Array.isArray(query.filter)) mustContain.push(...query.filter)
+    // if(query.hasOwnProperty('filter') && !Array.isArray(query.filter)) mustContain.push(query.filter)
 
     const filteredItems = sortedByDate.filter(item => {
       let found = true
       mustContain.forEach(n => {
-        found *= item.tags.indexOf(!isNaN(+n) ? +n : n) > -1
+        found *= item.tags.indexOf(convertNaN(n)) > -1
       })
       return Boolean(found)
     })
-    let pageOffset = !isNaN(query.offset) && +query.offset || 0, 
-      pageLimit = !isNaN(query.limit) && +query.limit || 6,
+    let pageOffset = convertNaN(query.offset) || 0,
+      pageLimit = convertNaN(query.limit) || 6,
       length = filteredItems.length,
       pageCurrent = Math.floor(pageOffset / pageLimit) + 1,
       pageTotal = Math.ceil(length / pageLimit),
@@ -84,15 +88,16 @@ const
     }
   }
 
+router.use(bodyParser.json())
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.send('Valtech API')
 })
 
-router.get('/v1/insights', (req, res, next) => {
+router.use('/v1/insights', (req, res, next) => {
   const query = req.query
 
-  const 
+  const
     filtersFile = path.join(jsonpath, 'insights.filters.json'),
     listFile = path.join(jsonpath, 'insights.list.json')
 
@@ -105,10 +110,11 @@ router.get('/v1/insights', (req, res, next) => {
   .then(res.json.bind(res))
 })
 
-router.get('/v1/cases', (req, res, next) => {
-  const query = req.query
+router.all('/v1/cases', (req, res, next) => {
+  const query = {...req.query, ...req.body}
+  console.log(JSON.stringify(query))
 
-  const 
+  const
     filtersFile = path.join(jsonpath, 'cases.filters.json'),
     listFile = path.join(jsonpath, 'cases.list.json')
 
@@ -118,11 +124,12 @@ router.get('/v1/cases', (req, res, next) => {
     dataList: JSON.parse(values[1])
   }))
   .then(returnFilteredData.bind(null, query))
+  // .then(json => {console.log(json); return json})
   .then(res.json.bind(res))
 })
 
-router.use('/v1/jobs', (req, res, next) => {
-  const 
+router.all('/v1/jobs', (req, res, next) => {
+  const
     filtersFile = path.join(jsonpath, 'jobs.filters.json'),
     listFile = path.join(jsonpath, 'jobs.list.json')
 
