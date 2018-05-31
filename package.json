@@ -27,6 +27,7 @@
     "precommit": "npm test"
   },
   "dependencies": {
+    "body-parser": "^1.18.3",
     "clone": "^1.0.2",
     "cors": "^2.8.4",
     "json-server": "^0.12.1"
