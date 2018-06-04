@@ -16,7 +16,14 @@ const
 const
   convertNaN = (value) => !isNaN(value) ? +value : value,
 
-	sortByDate = (a, b) => new Date(b.publishedDate) - new Date(a.publishedDate),
+  sortByDate = (a, b) => new Date(b.publishedDate) - new Date(a.publishedDate),
+  
+  convertPropertyTypeToArray = (object, key) => {
+    if (object.hasOwnProperty(key) && !Array.isArray(object[key])) {
+      object[key] = [convertNaN(object[key])]
+    }
+    return object
+  },
 
 	uniqueTagsFromItems = (items) => {
 		let tags = []
@@ -29,6 +36,8 @@ const
   returnFilteredData = (query, files) => {
     const { dataFilter, dataList } = files
 
+    query = convertPropertyTypeToArray(query, 'filter')
+    
     const
       sortedByDate = dataList.sort(sortByDate)
 
@@ -37,8 +46,16 @@ const
       const slug = convertNaN(item.value)
       if (query.hasOwnProperty(slug) && query[slug]) mustContain.push(query[slug])
     })
-    if(query.hasOwnProperty('filter') && Array.isArray(query.filter)) mustContain.push(...query.filter)
+
+    if (query.hasOwnProperty('filter')) {
+      if (Array.isArray(query.filter)) {
+        mustContain.push(...query.filter)
+      } else {
+        mustContain.push(query.filter)
+      }
+    }
     // if(query.hasOwnProperty('filter') && !Array.isArray(query.filter)) mustContain.push(query.filter)
+    
 
     const filteredItems = sortedByDate.filter(item => {
       let found = true
@@ -95,8 +112,25 @@ router.get('/', function(req, res, next) {
 })
 
 router.use('/v1/insights', (req, res, next) => {
-  const query = req.query
+  let query = req.query
 
+  if (!query.hasOwnProperty('limit')) {
+
+  }
+  if (!query.hasOwnProperty('offset')
+  || query.hasOwnProperty('offset') 
+  && !isNaN(query.offset)
+  && (query.offset == 0)) {
+    query = {...query, ...{
+      limit: 13
+    }}
+  } else {
+    query = {...query, ...{
+      limit: 9
+    }}
+  }
+
+  
   const
     filtersFile = path.join(jsonpath, 'insights.filters.json'),
     listFile = path.join(jsonpath, 'insights.list.json')
