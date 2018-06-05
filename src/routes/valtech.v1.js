@@ -126,7 +126,7 @@ router.use('/v1/insights', (req, res, next) => {
     }}
   } else {
     query = {...query, ...{
-      limit: 9
+      limit: 6
     }}
   }
 
