@@ -111,6 +111,24 @@ router.get('/', function(req, res, next) {
   res.send('Valtech API')
 })
 
+router.all('/v1/whitepapers', (req, res, next) => {
+  const query = {...req.query, ...req.body}
+  console.log(JSON.stringify(query))
+
+  const
+    filtersFile = path.join(jsonpath, 'whitepapers.filters.json'),
+    listFile = path.join(jsonpath, 'whitepapers.list.json')
+
+  return Promise.all([readFile(filtersFile), readFile(listFile)])
+  .then(values => ({
+    dataFilter: JSON.parse(values[0]),
+    dataList: JSON.parse(values[1])
+  }))
+  .then(returnFilteredData.bind(null, query))
+  // .then(json => {console.log(json); return json})
+  .then(res.json.bind(res))
+})
+
 router.use('/v1/insights', (req, res, next) => {
   let query = req.query
 
