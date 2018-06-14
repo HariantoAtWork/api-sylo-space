@@ -193,4 +193,15 @@ router.all('/v1/jobs', (req, res, next) => {
   .then(res.json.bind(res))
 })
 
+router.all('/v1/contacts', (req, res, next) => {
+  const
+    listFile = path.join(jsonpath, 'offices.list.json')
+
+  return Promise.all([readFile(listFile)])
+  .then(values => ({
+    list: JSON.parse(values[0])
+  }))
+  .then(res.json.bind(res))
+})
+
 module.exports = router
