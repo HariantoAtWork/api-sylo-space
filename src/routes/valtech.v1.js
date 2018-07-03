@@ -111,6 +111,24 @@ router.get('/', function(req, res, next) {
   res.send('Valtech API')
 })
 
+router.get('/v1/i18n', (req, res, next) => {
+  const
+    i18nFile = path.join(jsonpath, 'valtech.i18n.json')
+
+  return Promise.all([readFile(i18nFile)])
+  .then(values => ({
+    dataI18n: JSON.parse(values[0])
+  }))
+  .then(files => {
+    const { dataI18n } = files
+    return {
+      i18n: dataI18n
+    }
+  })
+  // .then(json => {console.log(json); return json})
+  .then(res.json.bind(res))
+})
+
 router.get('/v1/whitepapers/id/:id', (req, res, next) => {
   const
     filtersFile = path.join(jsonpath, 'whitepapers.filters.json'),
@@ -125,7 +143,9 @@ router.get('/v1/whitepapers/id/:id', (req, res, next) => {
     const { id } = req.params
     const { dataList } = files
     const found = dataList.find(item => item.id == id)
-    return found ? found : {}
+    return {
+      item: found ? found : {}
+    }
   })
   // .then(json => {console.log(json); return json})
   .then(res.json.bind(res))
@@ -163,7 +183,9 @@ router.get('/v1/insights/id/:id', (req, res, next) => {
     const { id } = req.params
     const { dataList } = files
     const found = dataList.find(item => item.id == id)
-    return found ? found : {}
+    return {
+      item: found ? found : {}
+    }
   })
   .then(res.json.bind(res))
 })
@@ -215,7 +237,9 @@ router.all('/v1/cases/id/:id', (req, res, next) => {
     const { id } = req.params
     const { dataList } = files
     const found = dataList.find(item => item.id == id)
-    return found ? found : {}
+    return {
+      item: found ? found : {}
+    }
   })
   .then(res.json.bind(res))
 })
@@ -252,7 +276,9 @@ router.get('/v1/jobs/id/:id', (req, res, next) => {
     const { id } = req.params
     const { list } = files
     const found = list.find(item => item.id == id)
-    return found ? found : {}
+    return {
+      item: found ? found : {}
+    }
   })
   .then(res.json.bind(res))
 })
@@ -293,9 +319,13 @@ router.all('/v1/contacts', (req, res, next) => {
     const { id } = req.params
     const { list } = files
     const found = list.find(item => item.id == id)
-    return found ? found : {}
+    return {
+      item: found ? found : {}
+    }
   })
   .then(res.json.bind(res))
 })
+
+
 
 module.exports = router
