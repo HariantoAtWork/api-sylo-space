@@ -1,12 +1,12 @@
 {
     "label": {
-        "first-name": "First name",
-        "last-name": "Last name",
-        "job-title": "Job Title",
+        "firstName": "First name",
+        "lastName": "Last name",
+        "jobTitle": "Job Title",
         "company": "Company",
         "country": "Country"
     },
-    "select-option": {
+    "selectOption": {
         "country": [
             { "text": "Country", "value": null, "disabled": true, "selected": true },
             { "text": "Argentina", "value": "Argentina" },
