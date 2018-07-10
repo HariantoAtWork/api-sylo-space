@@ -111,6 +111,11 @@ router.get('/', function(req, res, next) {
   res.send('Valtech API')
 })
 
+router.all('/log', (req, res, next) => {
+  const query = {...req.query, ...req.body}
+
+  res.json(query)
+})
 router.get('/v1/i18n', (req, res, next) => {
   const
     i18nFile = path.join(jsonpath, 'valtech.i18n.json')
