@@ -32,7 +32,7 @@ RUN npm install graceful-fs && npm install
 USER root
 COPY . $NODE_WORKDIR
 RUN chown -R node:node /home/node
-RUN rm $PORT; touch $PORT && chmod 777 $PORT
+# RUN rm $PORT; touch $PORT && chmod 777 $PORT
 
 # USER node
 
