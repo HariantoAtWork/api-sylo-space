@@ -20,7 +20,7 @@
   },
   "scripts": {
     "start": "gulp reload:server",
-    "docker": "rm /tmp/api-sylo-space.sock; node index",
+    "docker": "node index",
     "gulp": "gulp",
     "push-docker": "docker build -t harianto/api-sylo-space . && docker push harianto/api-sylo-space",
     "test": "node test/app",
