@@ -15,11 +15,11 @@ app.use((req, res, next) => {
   next()
 })
 
-app.use((req, res, next) => {
-  if (req.path === '/') return next()
-  router.db.setState(clone(data))
-  next()
-})
+// app.use((req, res, next) => {
+//   if (req.path === '/') return next()
+//   router.db.setState(clone(data))
+//   next()
+// })
 
 app.use(jsonServer.defaults({
   logger: process.env.NODE_ENV !== 'production'
