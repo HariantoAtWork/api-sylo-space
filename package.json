@@ -30,14 +30,14 @@
     "body-parser": "^1.18.3",
     "clone": "^1.0.2",
     "cors": "^2.8.4",
-    "json-server": "^0.12.1"
+    "json-server": "^0.16.0"
   },
   "devDependencies": {
     "Faker": "~0.5.11",
     "gulp": "^3.9.1",
     "gulp-auto-restart": "0.0.3",
     "gulp-livereload": "^3.8.1",
-    "gulp-nodemon": "^2.2.1",
+    "gulp-nodemon": "^2.4.2",
     "husky": "^0.13.2",
     "node-notifier": "^5.2.1",
     "nodemon": "^1.17.3",
