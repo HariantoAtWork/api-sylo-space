@@ -39,7 +39,7 @@
     "gulp-livereload": "^3.8.1",
     "gulp-nodemon": "^2.4.2",
     "husky": "^0.13.2",
-    "node-notifier": "^5.2.1",
+    "node-notifier": "^8.0.1",
     "nodemon": "^1.17.3",
     "rosie": "~1.6.0",
     "supertest": "^1.2.0",
